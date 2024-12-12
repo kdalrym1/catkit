@@ -81,14 +81,14 @@ class Stage(Instrument):
         """
 
         hmst = self.get_home_settings()
-
-        # print(f'FastHome=   {hmst.FastHome} \
-        #       \nuFastHome=  {hmst.uFastHome} \
-        #       \nSlowHome=   {hmst.SlowHome} \
-        #       \nuSlowHome=  {hmst.uSlowHome} \
-        #       \nHomeDelta=  {hmst.HomeDelta} \
-        #       \nuHomeDelta= {hmst.uHomeDelta} \
-        #       \nHomeFlags=  {hmst.HomeFlags}')
+        #print(self.device_name)
+ #       print(f'FastHome=   {hmst.FastHome} \
+ #              \nuFastHome=  {hmst.uFastHome} \
+ #              \nSlowHome=   {hmst.SlowHome} \
+ #              \nuSlowHome=  {hmst.uSlowHome} \
+ #              \nHomeDelta=  {hmst.HomeDelta} \
+ #              \nuHomeDelta= {hmst.uHomeDelta} \
+ #              \nHomeFlags=  {hmst.HomeFlags}')
 
         # hmst.FastHome = int(100)
         # hmst.uFastHome = int(0)
@@ -104,6 +104,16 @@ class Stage(Instrument):
 
         if result != self.instrument_lib.Result.Ok:
             raise RuntimeError("command_homezero failed")
+
+        # print(f'FastHome=   {hmst.FastHome} \
+        #       \nuFastHome=  {hmst.uFastHome} \
+        #       \nSlowHome=   {hmst.SlowHome} \
+        #       \nuSlowHome=  {hmst.uSlowHome} \
+        #       \nHomeDelta=  {hmst.HomeDelta} \
+        #       \nuHomeDelta= {hmst.uHomeDelta} \
+        #       \nHomeFlags=  {hmst.HomeFlags}')
+        # print(' ***  ')
+
 
     def set_home_settings(self, settings):
         result = self.instrument_lib.lib.set_home_settings(self.instrument, ctypes.byref(settings))

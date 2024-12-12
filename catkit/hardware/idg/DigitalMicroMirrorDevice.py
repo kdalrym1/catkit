@@ -39,7 +39,7 @@ class DigitalMicroMirrorDevice(DeformableMirrorController):
         self.address_family = socket.AddressFamily[multiprocess.connection.address_type(self.address)]
 
         self.start_on_whiteout = start_on_whiteout
-        self.dmd_size = shape
+        self.dmd_size = tuple(shape)
         self.max_diff = shape[0]*shape[1] if max_diff is None else max_diff
         self.display_type = display_type
         self.dmd_data_path = dmd_data_path
@@ -69,7 +69,7 @@ class DigitalMicroMirrorDevice(DeformableMirrorController):
             # connection wasn't open.
             self.instrument.connect(self.address)
 
-        self.test()
+        # self.test()
 
         return self.instrument
 
@@ -82,7 +82,7 @@ class DigitalMicroMirrorDevice(DeformableMirrorController):
         self.instrument = self.connect()
         
         # Apply a whiteout to start 
-        if self._start_on_whiteout:
+        if self.start_on_whiteout:
             self.apply_whiteout()
 
         return self.instrument
@@ -100,7 +100,7 @@ class DigitalMicroMirrorDevice(DeformableMirrorController):
         sucessfully received it."""
 
         # reinstantiate connection since it times out
-        self.connect()
+        #self.connect()
         
         # Check the command message type
         message_type = command[4]

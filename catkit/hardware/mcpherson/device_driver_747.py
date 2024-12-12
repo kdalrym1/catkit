@@ -54,7 +54,7 @@ class McPherson747(PyVisaInstrument):
     FLOW_CONTROL = pyvisa.constants.ControlFlow.xon_xoff
     ENCODING = "ascii"
     QUERY_TIMEOUT = 800  # ms
-    HEADER_TIMEOUT = 20000  # ms
+    HEADER_TIMEOUT = 2000  # ms
     WRITE_TERMINATION = ''
     READ_TERMINATION = '\r'
 
